@@ -223,3 +223,6 @@ Possibles:
     will be a very powerful trick, since its simple enough to work in
     real life (unlike the current symbolic systems).
 
+
+
+{% include labs/README.md %}
