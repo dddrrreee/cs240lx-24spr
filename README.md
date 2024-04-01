@@ -64,3 +64,8 @@ the ones that seem the most interesting.
 Staff:
   - head TA: Joseph Tan 
   - Dawson Engler.
+
+
+
+{% include labs/README.md %}
+
