@@ -5,7 +5,9 @@ tl;dr index:
 
   - [This is a lab class and here are the labs](./labs/).
   - [Course website](https://github.com/dddrrreee/cs240lx-24spr).
-  - [Course newsgroup](https://github.com/dddrrreee/cs240lx-24spr).
+  - [Course newsgroup](https://groups.google.com/g/cs240lx-spr24)
+    By default newsgroups send email --- you probably want to change   
+    the setting so that you can just use a webbrowser.
   - To get the repository: 
 
         git clone git@github.com:dddrrreee/cs240lx-24spr.git
@@ -64,8 +66,4 @@ the ones that seem the most interesting.
 Staff:
   - head TA: Joseph Tan 
   - Dawson Engler.
-
-
-
-{% include labs/README.md %}
 
