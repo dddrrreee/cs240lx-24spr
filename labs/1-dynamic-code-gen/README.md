@@ -128,11 +128,9 @@ These have two parts:
 What you need for PUT32:
   1. Machine code to do a store.  From the original machine code:
 
-```
-        00008024 <PUT32>:
-            8024:   e5801000    str r1, [r0]
-            8028:   e12fff1e    bx  lr
-```
+            00008024 <PUT32>:
+                8024:   e5801000    str r1, [r0]
+                8028:   e12fff1e    bx  lr
 
      Thus, the store is `0xe5801000`.  
 
