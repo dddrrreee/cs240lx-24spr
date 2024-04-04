@@ -16,7 +16,7 @@ and letting us know which seem most interesting.
      please look through these after the first class and see which
      you prefer.
 
-This is the third offering of the class.  While we have done many of
+This is the fourth offering of the class.  While we have done many of
 the labs once before in cs240lx or cs340lx many ideas are research-paper
 level and how to best implement them is still up in the air, so the only
 constant will be change.
@@ -122,7 +122,23 @@ Some rough grouping of projects:
        This tool would have caught many errors we made when designing cs107e;
        some of them took days to track down.
 
-   3. Device code.  140e was packed enough that we didn't' do many devices,
+   3. Larger device projects.  Possible examples:
+       - Making a logic analyzer with an OLED or HDMI devices as a 
+         screen display
+       - motion controlled, network lighting.  This would have 
+         two pi's: one on you attached to a gyro/accel, one somewhere 
+         else attached to lights.  The former would control the latter.
+         This would use a network bootloader, and a bunch of other tricks.
+
+   4.  Various ad-hoc networkig.  This will include sending and receiving
+       using IR, using a speaker and a mic, using a motor and a mic, possibly
+       using and LED and a photosensor.
+
+       In all cases you'd be using a weird medium to encode and decode
+       bits and using the result to send code.  This is good for a wow
+       factor.
+
+   5. Device code.  140e was packed enough that we didn't' do many devices,
       which are where alot of the fun is.  We'll do a bunch of fun 
       devices across the quarter.
 
@@ -222,4 +238,3 @@ Possibles:
     solve them and rerun the result on the code.  If we can do this it
     will be a very powerful trick, since its simple enough to work in
     real life (unlike the current symbolic systems).
-
