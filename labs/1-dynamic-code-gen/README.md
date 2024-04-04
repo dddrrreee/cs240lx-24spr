@@ -47,6 +47,32 @@ We'll do a bunch of simple examples that show how to exploit both
 runtime machine code generation or self-modifying to get speed or 
 expressivity.
 
+
+### 140e students
+
+Some of you have done some of the below as extensions.  There's
+a bunch of other stuff to do instead:
+  1. Redo the lab to generate the code on your laptop.  This will likely
+     require defeating exploit-proofing the OS has put in place
+     (e.g., disallowing executing heap memory).
+
+     Even better: make a fake little RISC language (you can look at the
+     vcode paper) and have two backends: one that JITs to your laptop,
+     one that JITs to the pi.
+
+  2. Change the "full-except" code in 140E to use jitting to jump 
+     right to the user handler.  Tune your interrupt handler to 
+     be as fast as possible and make sure you get the same results.
+
+  3. Implement a veneer for the performance monitoring unit on the
+     arm1176 (this is 3-133 to 3-138) and use this to determine 
+     why exactly you are getting speedups.
+
+  4. Add support to flush the data cache and instruction cache 
+     on the exact regions that were modified.
+
+There's various other hacks you can do; let us know if you need them!
+
 ----------------------------------------------------------------------------
 ### Part 0: Getting started.
 
@@ -102,9 +128,11 @@ These have two parts:
 What you need for PUT32:
   1. Machine code to do a store.  From the original machine code:
 
+```
         00008024 <PUT32>:
             8024:   e5801000    str r1, [r0]
             8028:   e12fff1e    bx  lr
+```
 
      Thus, the store is `0xe5801000`.  
 
