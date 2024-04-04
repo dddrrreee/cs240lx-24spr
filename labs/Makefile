@@ -1,5 +1,6 @@
 # Makefile to build or clean all labs.
-SUBDIRS= # libunix libpi labs #  libunix
+SUBDIRS= 0-pi-setup
+# libunix libpi labs #  libunix
 
 .PHONY: all check clean
 all check clean: $(SUBDIRS)
