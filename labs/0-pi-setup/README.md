@@ -1,5 +1,18 @@
 ## Setup r/pi hardware and its toolchain
 
+
+#### for macos:
+
+Use the [cs107e install notes](https://web.archive.org/web/20210414133806/http://cs107e.github.io/guides/install/mac/).
+Note: do not install the python stuff. We will use their custom brew
+formula!
+
+If you get an error that it can't find `string.h`, you want to set
+`CPATH` to the empty string (see a TA for help if you need it).
+
+##### intro
+
+
 <p align="center">
   <img src="images/parthiv-pile.jpg" width="400" />
 </p>
