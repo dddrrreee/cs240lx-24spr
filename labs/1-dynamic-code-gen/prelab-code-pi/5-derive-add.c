@@ -67,6 +67,9 @@ void notmain() {
     output("-------------------------------------\n");
     output("going to try cheating!\n");
     // we cheat and assume contiguous and r0...r15
+    always_0 = ~0;
+    always_1 = ~0;
+
     always_0 &= ~inst[0];
     always_0 &= ~inst[15];
     always_1 &= inst[0];

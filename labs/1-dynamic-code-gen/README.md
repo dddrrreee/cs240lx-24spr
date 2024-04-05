@@ -107,6 +107,8 @@ and without linking):
 ----------------------------------------------------------------------------
 ### Part 2: Runtime inlining.
 
+***[NOTE: do this after part 3 and 4 which are a lot easier to debug.]***
+
 Modern C compilers generally only inline routines that are in the same
 file (or included header file).  And even then they may only do it if it
 the definition appears before the use.
@@ -283,5 +285,3 @@ It's fun.
 
    2. Write the code in `5-jit-dot` to encode a dot product in the 
       instruction stream, skipping zeros.  
-
-  
