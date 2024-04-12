@@ -93,10 +93,15 @@ If you run the code in `weird-timings` you can verify this yourself.
 I went through and soldered / shrink wrapped / tested the neopixels
 last night.  Hopefully, they are still in working order when you get them.
 
-To hook up the light strings, the female wires should be:
-  - Red for power: 3v only!
-  - Green or black for ground.
-  - White for signal (GPIO pin 21).
+To hook up the light strings wire up the:
+  - power
+  - ground
+  - signal to GPIO 21
+
+Some light strips allow you to attach to both sides. 
+If you look closely there are little arrows on the light strips.
+Make sure you attach the light strips to the side the arrows are
+pointing away from
 
 Bootload the `staff-binaries/2-neopix.bin` and make sure it sends some
 pixels around the light strip.
