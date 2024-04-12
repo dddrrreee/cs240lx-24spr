@@ -158,7 +158,8 @@ buffering the a light string.  Finish implementing these (should be fast)
 and verify the supplied cursor routine in `2-neopix.c` does something.
 
   1. `neopix_write`: if the position passed in (`pos`) is out of bounds,
-     just return.
+     just return. This function only modifies `h` - it shouldn't
+     write to the actual neopixel
   2. `neopix_flush`: write out the pixel values in the array, do a flush.
      Only then set the array to all 0s.
 
