@@ -142,6 +142,18 @@ needed nanosecond in the timings in `WS2812B.h`:
 You will also need to implement inlined versions of your `gpio_set_on`
 and `gpio_set_off` (also defined in `WS2812B.h`).
 
+If you are having a problem finding the `enable_cache`, function, use this:
+
+```
+void enable_cache(void) {
+    unsigned r;
+    asm volatile ("MRC p15, 0, %0, c1, c0, 0" : "=r" (r));
+	r |= (1 << 12); // l1 instruction cache
+	r |= (1 << 11); // branch prediction
+    asm volatile ("MCR p15, 0, %0, c1, c0, 0" :: "r" (r));
+}
+```
+
 -------------------------------------------------------------------------
 ### Part 1: turn on one pixel (5 minutes)
 
