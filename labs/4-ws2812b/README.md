@@ -142,6 +142,9 @@ needed nanosecond in the timings in `WS2812B.h`:
 You will also need to implement inlined versions of your `gpio_set_on`
 and `gpio_set_off` (also defined in `WS2812B.h`).
 
+
+-------------------------------------------------------------------------
+### Part 1: turn on one pixel (5 minutes)
 If you are having a problem finding the `enable_cache`, function, use this:
 
 ```
@@ -153,9 +156,6 @@ void enable_cache(void) {
     asm volatile ("MCR p15, 0, %0, c1, c0, 0" :: "r" (r));
 }
 ```
-
--------------------------------------------------------------------------
-### Part 1: turn on one pixel (5 minutes)
 
 As a "hello world" you should call your code to turn on one pixel to
 a specific color.  Make sure `1-blink.c` works with your code and then

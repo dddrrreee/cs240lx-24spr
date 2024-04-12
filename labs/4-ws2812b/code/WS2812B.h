@@ -113,10 +113,10 @@
 // duplicate set_on/off so we can inline to reduce overhead.
 // they have to run in < the delay we are shooting for.
 static inline void gpio_set_on_raw(unsigned pin) {
-    unimplemented();
+    *(volatile uint32_t*)(0x2020001C) = 1 << pin;
 }
 static inline void gpio_set_off_raw(unsigned pin) {
-    unimplemented();
+    *(volatile uint32_t*)(0x20200028) = 1 << pin;
 }
 
 // use cycle_cnt_read() to delay <n_cyc> cycles measured from <start_cyc>
