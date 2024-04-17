@@ -99,6 +99,26 @@ protocol for your remote in that each burst (where we cycle the LED
 off and on at 38khz) will be paired with a longer quiet period where
 we don't transmit.
 
+### Simple transmit for LED
+
+How to transmit using the IR led (blue, translucent):
+
+    Unlike our normal LED usage, you can't send a 0 by leaving the LED off and send 1 by turning it on.
+    The TSOP looks for a specific signal of off-on sent at a specific Khz and rejects everything else.
+    So look in the datasheet for the frequency it expects.
+    Compute the microseconds for on-off.
+    To send a 0 for T useconds: flip the LED off and on at the right frequence for T useconds.
+
+    When you cycle like this, your IR sensor will read a 0. Otherwise it will read a 1
+
+Compute the period as:
+```
+usec_period = 1./freq * 1000. * 1000.
+usec on-off = usec_period / 2.
+```
+
+Alternate sending this signal and show you can blink your second pi's LED.
+
   - As before: our default will be non-transmitting (which will
     cause the receiver to read 1).
 
