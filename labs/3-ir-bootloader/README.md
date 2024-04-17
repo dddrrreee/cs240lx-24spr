@@ -35,7 +35,7 @@ Outline:
   4. You should then be able to send code and jump to it.
 
 
-Common mistake:
+Common mistakes and tricky parts:
 
   - If you recall your software UART implementation from 140e, it had
     the same vulnerability.  It a high level the problem is obvious:
@@ -45,6 +45,8 @@ Common mistake:
     point: in the heat of battle, if your code doesn't work, the first
     thing we often do it throw in some `printk`s, which for today will
     sadly guarantee the code stays broken.
+  - If staff code doesn't work, try swapping your hardware
+  - Julius's didn't work unless his gyroscope was unplugged
 
 
 ### Checkoff
