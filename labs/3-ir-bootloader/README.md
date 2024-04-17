@@ -257,7 +257,7 @@ because the staff send calls staff_irput32 whose locks don't work with your irpu
 ### Part 4. sending code.
 
 If your packet code works, the bootloader should work too:
-  - Make sure you are using the latest version of the Makefile in `small-prog`
+  - In `small-prog`, move `Makefile-Fixed` into `Makefile`
   - run `make code-hello.h`
   - the code is `small-prog/hello.bin` translated into a byte array 
     (see `small-prog/code-hello.h`) with a header.
