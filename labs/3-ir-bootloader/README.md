@@ -1,5 +1,9 @@
 ## IR bootloader
 
+# I screwed up git. Figure out a way to pull and while keeping your changes
+# to WS2812B.h
+
+
 Today we're going to adapt your IR transmit and receive to bootload
 code remotely.  At the end of class you should be able to send code to
 someone else's pi and have it run.
@@ -247,6 +251,8 @@ I used a dumb protocol for sending packets:
 
   5. Sender: if receives `PKT_DATA_ACK` is done.
 
+*you cannot mix and match staff send packet code with your receive code or vice versa
+because the staff send calls staff_irput32 whose locks don't work with your irput32*
 
 ### Part 4. sending code.
 
