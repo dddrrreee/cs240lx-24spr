@@ -74,11 +74,11 @@
     // can flip between.
     enum { 
         // to send a 1: set pin high for T1H ns, then low for T0H ns.
-        T1H = ns_to_cycles(300),        // Width of a 1 bit in ns
-        T0H = ns_to_cycles(900),        // Width of a 0 bit in ns
+        T1H = ns_to_cycles(0),        // Width of a 1 bit in ns
+        T0H = ns_to_cycles(0),        // Width of a 0 bit in ns
         // to send a 0: set pin high for T1L ns, then low for T0L ns.
-        T1L = ns_to_cycles(900),        // Width of a 1 bit in ns
-        T0L = ns_to_cycles(300),        // Width of a 0 bit in ns
+        T1L = ns_to_cycles(0),        // Width of a 1 bit in ns
+        T0L = ns_to_cycles(0),        // Width of a 0 bit in ns
 
         // to make the LED switch to the new values, old the pin low for FLUSH ns
         FLUSH = ns_to_cycles(50 *1000)    // how long to hold low to flush
@@ -147,34 +147,32 @@ static unsigned const compensation = 16;
 // you may need to add a constant to correct for this.
 static inline void write_1(unsigned pin, unsigned ncycles) {
     // use gpio_set_on_raw
-    gpio_set_on_raw(pin);
-    delay_ncycles(cycle_cnt_read(), ncycles);
+    unimplemented();
 }
 
 // write 0 for <ncycles>: since reading the cycle counter takes cycles you
 // may need to add a constant to correct for it.
 static inline void write_0(unsigned pin, unsigned ncycles) {
     // use gpio_set_off_raw
-    gpio_set_off_raw(pin);
-    delay_ncycles(cycle_cnt_read(), ncycles);
+    unimplemented();
 }
 
 // implement T1H from the datasheet (call write_1 with the right delay)
 static inline void t1h(unsigned pin) {
-    write_1(pin, T1H + 98243);
+    unimplemented();
 }
 
 // implement T0H from the datasheet (call write_0 with the right delay)
 static inline void t0h(unsigned pin) {
-    write_1(pin, T0H);
+    unimplemented();
 }
 // implement T1L from the datasheet.
 static inline void t1l(unsigned pin) {
-    write_0(pin, T1L);
+    unimplemented();
 }
 // implement T0L from the datasheed.
 static inline void t0l(unsigned pin) {
-    write_0(pin, T0L);
+    unimplemented();
 }
 // implement RESET from the datasheet.
 static inline void treset(unsigned pin) {
