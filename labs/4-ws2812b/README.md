@@ -93,10 +93,15 @@ If you run the code in `weird-timings` you can verify this yourself.
 I went through and soldered / shrink wrapped / tested the neopixels
 last night.  Hopefully, they are still in working order when you get them.
 
-To hook up the light strings, the female wires should be:
-  - Red for power: 3v only!
-  - Green or black for ground.
-  - White for signal (GPIO pin 21).
+To hook up the light strings wire up the:
+  - power
+  - ground
+  - signal to GPIO 21
+
+Some light strips allow you to attach to both sides. 
+If you look closely there are little arrows on the light strips.
+Make sure you attach the light strips to the side the arrows are
+pointing away from
 
 Bootload the `staff-binaries/2-neopix.bin` and make sure it sends some
 pixels around the light strip.
@@ -137,8 +142,20 @@ needed nanosecond in the timings in `WS2812B.h`:
 You will also need to implement inlined versions of your `gpio_set_on`
 and `gpio_set_off` (also defined in `WS2812B.h`).
 
+
 -------------------------------------------------------------------------
 ### Part 1: turn on one pixel (5 minutes)
+If you are having a problem finding the `enable_cache`, function, use this:
+
+```
+void enable_cache(void) {
+    unsigned r;
+    asm volatile ("MRC p15, 0, %0, c1, c0, 0" : "=r" (r));
+	r |= (1 << 12); // l1 instruction cache
+	r |= (1 << 11); // branch prediction
+    asm volatile ("MCR p15, 0, %0, c1, c0, 0" :: "r" (r));
+}
+```
 
 As a "hello world" you should call your code to turn on one pixel to
 a specific color.  Make sure `1-blink.c` works with your code and then
@@ -153,7 +170,8 @@ buffering the a light string.  Finish implementing these (should be fast)
 and verify the supplied cursor routine in `2-neopix.c` does something.
 
   1. `neopix_write`: if the position passed in (`pos`) is out of bounds,
-     just return.
+     just return. This function only modifies `h` - it shouldn't
+     write to the actual neopixel
   2. `neopix_flush`: write out the pixel values in the array, do a flush.
      Only then set the array to all 0s.
 

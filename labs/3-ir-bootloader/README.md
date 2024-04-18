@@ -1,5 +1,9 @@
 ## IR bootloader
 
+# I screwed up git. Figure out a way to pull and while keeping your changes
+# to WS2812B.h
+
+
 Today we're going to adapt your IR transmit and receive to bootload
 code remotely.  At the end of class you should be able to send code to
 someone else's pi and have it run.
@@ -31,7 +35,7 @@ Outline:
   4. You should then be able to send code and jump to it.
 
 
-Common mistake:
+Common mistakes and tricky parts:
 
   - If you recall your software UART implementation from 140e, it had
     the same vulnerability.  It a high level the problem is obvious:
@@ -41,6 +45,8 @@ Common mistake:
     point: in the heat of battle, if your code doesn't work, the first
     thing we often do it throw in some `printk`s, which for today will
     sadly guarantee the code stays broken.
+  - If staff code doesn't work, try swapping your hardware
+  - Julius's didn't work unless his gyroscope was unplugged
 
 
 ### Checkoff
@@ -98,6 +104,26 @@ protocol that is more robust.  We'll model is sort-of on the IR
 protocol for your remote in that each burst (where we cycle the LED
 off and on at 38khz) will be paired with a longer quiet period where
 we don't transmit.
+
+### Simple transmit for LED
+
+How to transmit using the IR led (blue, translucent):
+
+    Unlike our normal LED usage, you can't send a 0 by leaving the LED off and send 1 by turning it on.
+    The TSOP looks for a specific signal of off-on sent at a specific Khz and rejects everything else.
+    So look in the datasheet for the frequency it expects.
+    Compute the microseconds for on-off.
+    To send a 0 for T useconds: flip the LED off and on at the right frequence for T useconds.
+
+    When you cycle like this, your IR sensor will read a 0. Otherwise it will read a 1
+
+Compute the period as:
+```
+usec_period = 1./freq * 1000. * 1000.
+usec on-off = usec_period / 2.
+```
+
+Alternate sending this signal and show you can blink your second pi's LED.
 
   - As before: our default will be non-transmitting (which will
     cause the receiver to read 1).
@@ -227,10 +253,14 @@ I used a dumb protocol for sending packets:
 
   5. Sender: if receives `PKT_DATA_ACK` is done.
 
+*you cannot mix and match staff send packet code with your receive code or vice versa
+because the staff send calls staff_irput32 whose locks don't work with your irput32*
 
 ### Part 4. sending code.
 
 If your packet code works, the bootloader should work too:
+  - In `small-prog`, move `Makefile-Fixed` into `Makefile`
+  - run `make code-hello.h`
   - the code is `small-prog/hello.bin` translated into a byte array 
     (see `small-prog/code-hello.h`) with a header.
   - We send it using `ir_send_pkt` and receive it using `ir_recv_pkt`.
