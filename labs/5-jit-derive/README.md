@@ -53,7 +53,7 @@ simple, but it gives you a feel for how the more general tricks are played:
      ```
      arm-none-eabi-as test.s -o temp1 && arm-none-eabi-objcopy -O binary temp1 temp2
      ```
-     and `temp2` will contain the binary
+     and now a file named `temp2` will contain the encoding
   2. Use (1) to implement a simple cross-checker that takes a
      machine code value and cross checks it against what is produced
      by the assembler.
