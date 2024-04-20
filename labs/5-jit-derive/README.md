@@ -47,7 +47,13 @@ simple, but it gives you a feel for how the more general tricks are played:
 
   1. Write the code (`insts_emit`) to emit strings of assembly 
      and read in machine code.  You'll call out to the ARM cross compiler
-     linker etc on your system.  `make.sh` has some examples.
+     linker etc on your system.  `make.sh` has some examples. One way to get
+     the encoding for a particular instruction is to, for example, put that
+     instruction into `test.s` and then run
+     ```
+     arm-none-eabi-as test.s -o temp1 && arm-none-eabi-objcopy -O binary temp1 temp2
+     ```
+     and now a file named `temp2` will contain the encoding
   2. Use (1) to implement a simple cross-checker that takes a
      machine code value and cross checks it against what is produced
      by the assembler.
