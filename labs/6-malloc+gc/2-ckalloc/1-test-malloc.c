@@ -21,8 +21,6 @@ typedef union header { /* block header */
 void notmain(void) {
     char *p0 = kr_malloc(1);
     unsigned n = sizeof (Header) + sizeof(union align);
-
-    panic("n=%d\n", n);
     int ntests = 10;
 
     output("malloc(1) = %p\n", p0);
