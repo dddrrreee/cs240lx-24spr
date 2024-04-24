@@ -4,7 +4,7 @@ PROGS := tests/gc-test5-gc.c
 PROGS := tests/gc-test4-no-leak.c  
 PROGS := tests/gc-test2-no-leak.c  
 PROGS := tests/gc-test1-no-leak.c  
-PROGS := $(wildcard ./tests/gc-test[0-9]*.c)
+PROGS := $(wildcard tests/gc-test[0-9]*.c)
 
 
 # you should  comment out all staff objs and replace with your code.
@@ -28,4 +28,4 @@ OPT_LEVEL = -O0
 #LIBS += $(LIB_POST)
 
 EXCLUDE ?= grep -v simple_boot
-include ../../../libpi/mk/Makefile.template-fixed
+include ../../../libpi/mk/Makefile.robust
