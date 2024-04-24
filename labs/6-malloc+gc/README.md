@@ -84,7 +84,7 @@ Invariants:
       be `ALLOCED`.
 
 ---------------------------------------------------------------------------
-### Part 2: leak detection (90 minutes?)
+### Part 2: leak detection (`3-leak+gc`)
 
 We will build a simple leak detector based on the approaches described in
 the Purify paper and Boehm's GC paper.  The tool will attempt to detect
@@ -207,7 +207,7 @@ For the pi, we implement the pseudo-code above as follows:
      We compute the address range of the two data segments using variables
      inserted into the binary using the linker script `libpi/memmap`.
 
-  3. `mark`: iterates over each word in a given range (inclusively)
+  3. `mark`: iterates over each 32-bit word in a given range (inclusively)
      and uses the routine `is_ptr` to resolve it to its associated header
      (if any).  For legal pointers: It increments the appropriate block
      reference counter, if the block was not already marked, marks it
@@ -221,9 +221,10 @@ For the pi, we implement the pseudo-code above as follows:
      leak runs do not obscure additional errors by repeatedly reporting
      old ones.)
 
-  5. The tests are in `part2-test\*.c` --- you should just work through
+  5. The tests are in `3-leak+gc/tests` --- you should just work through
      them one at a time like last time.  The tests are pretty simplistic,
-     so please also write some of your own!
+     so please also write some of your own!  Any test that does not
+     call `ck_gc()` (test5) should pass.
 
 Note, that its very easy to write tests that behave unexpectedly:
    1. Because of gcc optimization, its easy to have pointers to blocks get 
