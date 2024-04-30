@@ -21,8 +21,6 @@ void notmain(void) {
 
     char *p0 = ckalloc(1);
     unsigned n = sizeof (Header) + sizeof(union align);
-
-    panic("n=%d\n", n);
     int ntests = 10;
 
     output("malloc(1) = %p\n", p0);

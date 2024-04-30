@@ -1,6 +1,6 @@
-# PROGS += 5-test-ckalloc.c 
-# PROGS += 4-test-ckalloc.c 
-PROGS := $(wildcard [012345]-test*.c)
+PROGS += 4-test-ckalloc.c 
+#PROGS := 5-test-ckalloc.c 
+# PROGS := $(wildcard [012345]-test*.c)
 
 COMMON_SRC = pi-sbrk.c
 
