@@ -101,16 +101,25 @@ Today's checkoff:
   1. Have an analyzer that works.  (Part 1 below.)
   2. Show you've improved `scope` and `test-gen` by a reasonable amount. 
      (Part 2 below.)
+  3. Do the scope using interrupts and see how much better it gets.
 
-Since we're all about fun, I propose a contest, (winner declared in a
-week?) where we award a "cs140e Alpha hacker" badge to whomever improves
-accuracy to the highest absolute level.  I'll also send a $100 bill.
+Since we're all about fun, I propose a contest, (winner declared in
+a week?) where we award a "240lx hacker" badge to whomever improves
+accuracy to the highest absolute level.  I'll also kick in a $100 bill.
+You do have to beat my code (which I'll check in later ;).
 
-Extension from last lab:
-  1. Writing a software UART implementation.
-  2. Checking this protocol with your analyzer.
-  3. Using the protocol to send logged data from the analyzer-pi and your checked-pi.
-
+Extensions:
+  - turn your scope nd test into a network transmit and receive and 
+    see how much bandwidth you can get.
+  - use more than one wire and see how much bandwidth you can get.
+  - jit your test signal code.
+  - pull in your virtual memory from 140e, turn on caches, and see how
+    much faster.
+  - use the pi PWM hardware to generate a test signal.  i have no idea
+    how accurate it is, but am curious!
+  - change monitoring pi so that you can upload code to it and have the
+    code send results back to the monitored pi.
+  - there are tons.
 
 -----------------------------------------------------------------
 ### Organization
@@ -271,7 +280,62 @@ introducing variance.  On big common issue:
      in assembly).  However, this has downsides.
 
 -----------------------------------------------------------------
-### Use interrupts or page faults to get rid of the loop condition.
+### Part 3: redo your code to use interrupts (`code/3-scope-int`)
+
+I generally avoid interrupts because they make the code essentially
+untestable.  People already can't exhaustively test sequential code
+b/c the number of paths grows roughly exponentially with code size. If
+you add interrupts to this, you easily make a hard situation hopeless.
+My hot take is that many uses of interrupts in small systems could be
+eliminated with some thought, to the benefit of the system's robustness.
+
+With that said, we can use interrupts for the logic analzyer to 
+achieve very low measurement fluctuations and crank down the error to a level
+that seems hard with polling.  (I only realized this after a few years
+and only b/c a few very smart 240LX students were beating my code so I
+used interrupts to cheat).  For the digital scope:
+  1. Setup interrupts so that when a GPIO pin goes high or low, you 
+     get an interrupt.
+  2. The time from the exact cycle a GPIO pin goes high or low until we get an
+     interrupt triggered by this is relatively stable (certainly compared to 
+     a busy-waiting loop). 
+
+The basic idea:
+  1. We setup interrupts for gpio high and low (code is given).
+  2. We read the cycle counter *as the very first instruction in the
+     interrupt trampoline*.   This makes sure that we have the minimal
+     perturbation of the value read.
+  3. We pass this value to the interrupt handler.
+
+Problems:
+  1. Where to put the cycle counter value?  all registers are
+     live aren't they?  
+
+     Solution: store it in the `sp` register.  This works because (1)
+     while `sp` has a special name, it can be used the same as any
+     general purpose register (you can certainly store a value into it)
+     (2) we always load the `sp` each time with the interrupt stack.
+  
+  2. Once we have the cycle counter held in `sp`: how do we save the
+     rest of the registers?  We can't use the `sp` as a pointer to the
+     stack.
+
+     Solution: use the thread or process id registers described on 
+     page 3-129 of the ARM1176 document.   These are three scratch
+     registers that hardware doesn't interpret and the "OS" can use
+     however it wants.
+
+     Note: this is a good reason to reach chapter 3 of the arm1176:
+     there are all sorts of weirdo little operations that when you
+     add cleverness can let you do neat stuff not possible on a 
+     general purpose OS.
+
+You are given scaffolding for all of this, but you should drop in your
+140E implementations to get rid of our code (or re-implement yourself
+if you haven't taken 140E).
+
+-----------------------------------------------------------------
+### Use page faults or watchpoints to get rid of the loop condition.
 
 This should allow you to fit the loop in 16 bytes.  Which is crucial.
 More to follow.

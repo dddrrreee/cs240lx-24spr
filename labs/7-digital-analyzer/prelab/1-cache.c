@@ -57,6 +57,7 @@ void notmain(void) {
     measure("uncached");
     caches_enable();
     measure("cached");
+    measure("cached 2");
 
     clean_reboot();
 
