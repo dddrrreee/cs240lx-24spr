@@ -371,13 +371,20 @@ n = 9: about to write
 n = 9, time until read cycle=156, time until return==1195
 ```
 
+Because we have a cold icache, the first read takes 232 cycles and the 
+entire interrupt handler takes 1614 cycles from writing to GPIO pin until
+it returns.  The later iterations are fairly consistent, and lower because
+they are using the same code.
 
-You should go through and 
+#### What to do
+
+After you look throuhgh and play around with the code.  You should go through and:
   1. Move the cycle count read to the first instruction of the interrupt
      trampoline and pass it to the C code..  Use a global register to hold
-     the value.
-  2. Adapt the code to have your scope and test genration code.
+     the value.  Make sure this part works.
 
+  2. Make a copy of the the code and adapt it to have your scope and
+     test genration code.
 
 For my code, I get around 4 cycle error per sample, for a low total
 error:
