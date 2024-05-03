@@ -435,6 +435,13 @@ There are tons of extensions
     monitor how your pi controls the sonar device we gave out and then
     replay the signal, checking that the code prints out the same values.
 
+  - Change your code so that it can monitor multiple pins.  (This isn't
+    a huge deal, but is useful).
+
+  - Overclock the pi and the GPU to try to get finer-grained 
+    measurements.  Overclocking the GPU may require being careful
+    with the uart.
+
   - Measure your light array, measure your software uart, measure you
     IR and make sure they match the values you expect.  There will be
     some adjustment required, so doing these will let you sand your code
