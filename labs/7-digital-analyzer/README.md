@@ -282,6 +282,10 @@ introducing variance.  On big common issue:
 -----------------------------------------------------------------
 ### Part 3: redo your code to use interrupts (`code/3-scope-int`)
 
+Background:
+  - [140E's interrupt lab](https://github.com/dddrrreee/cs140e-24win/tree/main/labs/5-interrupts/README.md)
+  - [140E's device interrupt lab](https://github.com/dddrrreee/cs140e-24win/tree/main/labs/9-device-int/README.md)
+
 
 I generally avoid interrupts because they make the code essentially
 untestable.  People already can't exhaustively test sequential code
@@ -341,10 +345,11 @@ We give you a working code example that setups up interrupts on GPIO falling
 and rising edges and measures how long until the first cycle count read
 occurs (naively about 150 cycles), and how long the interrupt handler takes at 
 all (naively about 1200 cycles).
-  1. Connect a jumper from pin 20 to 21 (loopback).
+  1. Connect a jumper from pin 20 to 21 (loopback).  This is a nice thing about
+     interrupts: we don't need two pi's.  The test generator can run on the 
+     same machine as the scope code.
   2. `make` will run the code.
   3. Look through the code!
-
 
 For the initial implementation I get the following measurements:
 
@@ -404,6 +409,35 @@ event 11: v=1, cycle=5996, err=4, toterr=43
 event 12: v=0, cycle=5995, err=5, toterr=48
 event 13: v=1, cycle=5996, err=4, toterr=52
 ```
+
+
+#### Extensions
+
+There are tons of extensions
+  - Cut as many cycles as possible from the interrupt code: the smaller
+    you make the round trip take the finer you can sample.  (This is
+    one down side of the interrupt version: it can't sample nearly as
+    fast as the non-interrupt version).
+
+    You can inline all the code, likely eliminate all memory barriers
+    (make sure this is safe though), possibly ensure that you only get
+    one type of interrupt (i.e., no random GPU interrupts) so you can
+    eliminate all of these checks.
+
+    After doing the above, you could also use the "fast interrupt" mode 
+    so you get more registers, potentially being able to write everything
+    in assembly so you don't have to save or restore anything.
+
+    Additionally, add pinnned virtual memory so you can add data caching
+    (for writeback).
+
+  - Change your code so that it can do record-replay and use that to 
+    monitor how your pi controls the sonar device we gave out and then
+    replay the signal, checking that the code prints out the same values.
+
+  - Measure your light array, measure your software uart, measure you
+    IR and make sure they match.  There will be some adjustment required,
+    so doing these will let you sand your code down into something useabel.
 
 -----------------------------------------------------------------
 ### Use page faults or watchpoints to get rid of the loop condition.
