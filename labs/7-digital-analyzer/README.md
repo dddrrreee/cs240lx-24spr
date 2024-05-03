@@ -327,7 +327,7 @@ Problems:
      however it wants.
 
 <p align="center">
-  <img src="images/global-regs" width="400" />
+  <img src="images/global-regs.png" width="400" />
 </p>
 
      Note: this is a good reason to reach chapter 3 of the arm1176:
