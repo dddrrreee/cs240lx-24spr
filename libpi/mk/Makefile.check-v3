@@ -136,7 +136,7 @@ cksum:  $(TEST_CKSUM)
 #cleanall:
 #	rm -f *.out *.raw
 clean::
-	rm -f *~ *.test *.test.raw
+	rm -f *~ *.test *.test.raw *.raw
  
 .PHONY: all clean run emit check cksum
 
