@@ -368,6 +368,7 @@ n = 8: about to write
 n = 8, time until read cycle=154, time until return==1197
 n = 9: about to write
 n = 9, time until read cycle=156, time until return==1195
+```
 
 
 You should go through and 
