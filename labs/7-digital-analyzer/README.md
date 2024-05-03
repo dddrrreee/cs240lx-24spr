@@ -347,6 +347,7 @@ all (naively about 1200 cycles).
 
 
 For the initial implementation I get the following measurements:
+
 ```
 n = 0: about to write
 n = 0, time until read cycle=232, time until return==1614
