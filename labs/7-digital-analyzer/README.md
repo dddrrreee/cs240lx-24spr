@@ -282,6 +282,7 @@ introducing variance.  On big common issue:
 -----------------------------------------------------------------
 ### Part 3: redo your code to use interrupts (`code/3-scope-int`)
 
+
 I generally avoid interrupts because they make the code essentially
 untestable.  People already can't exhaustively test sequential code
 b/c the number of paths grows roughly exponentially with code size. If
@@ -325,10 +326,16 @@ Problems:
      registers that hardware doesn't interpret and the "OS" can use
      however it wants.
 
+<p align="center">
+  <img src="images/global-regs" width="400" />
+</p>
+
      Note: this is a good reason to reach chapter 3 of the arm1176:
      there are all sorts of weirdo little operations that when you
      add cleverness can let you do neat stuff not possible on a 
      general purpose OS.
+
+
 
 You are given scaffolding for all of this, but you should drop in your
 140E implementations to get rid of our code (or re-implement yourself
