@@ -324,17 +324,17 @@ Problems:
      Solution: use the thread or process id registers described on 
      page 3-129 of the ARM1176 document.   These are three scratch
      registers that hardware doesn't interpret and the "OS" can use
-     however it wants.
-
-<p align="center">
-  <img src="images/global-regs.png" width="400" />
-</p>
+     however it wants.  The screenshot of the manual below gives the 
+     instructions.
 
      Note: this is a good reason to reach chapter 3 of the arm1176:
      there are all sorts of weirdo little operations that when you
      add cleverness can let you do neat stuff not possible on a 
      general purpose OS.
 
+<p align="center">
+  <img src="images/global-regs.png" width="400" />
+</p>
 
 
 You are given scaffolding for all of this, but you should drop in your
