@@ -1,4 +1,4 @@
-SUBDIRS=  test-gen scope
+SUBDIRS=  test-gen scope scope-int
 
 .PHONY: all check clean
 all check clean: $(SUBDIRS)
@@ -11,7 +11,7 @@ clean: TARGET=clean
 
 # recursive call to make
 $(SUBDIRS): force
-	$(MAKE) -s -C $@ $(TARGET)
+	$(MAKE) -s -C $@ $(TARGET) RUN=0
 
 clean:
 	rm -f *~ *.bak
