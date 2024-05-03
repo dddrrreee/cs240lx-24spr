@@ -436,8 +436,9 @@ There are tons of extensions
     replay the signal, checking that the code prints out the same values.
 
   - Measure your light array, measure your software uart, measure you
-    IR and make sure they match.  There will be some adjustment required,
-    so doing these will let you sand your code down into something useabel.
+    IR and make sure they match the values you expect.  There will be
+    some adjustment required, so doing these will let you sand your code
+    down into something useabel.
 
 -----------------------------------------------------------------
 ### Use page faults or watchpoints to get rid of the loop condition.
