@@ -333,7 +333,7 @@ Problems:
      general purpose OS.
 
 <p align="center">
-  <img src="images/global-regs.png" width="600" />
+  <img src="images/global-regs.png" width="800" />
 </p>
 
 
