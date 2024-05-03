@@ -337,9 +337,64 @@ Problems:
 </p>
 
 
-You are given scaffolding for all of this, but you should drop in your
-140E implementations to get rid of our code (or re-implement yourself
-if you haven't taken 140E).
+We give you a working code example that setups up interrupts on GPIO falling
+and rising edges and measures how long until the first cycle count read
+occurs (naively about 150 cycles), and how long the interrupt handler takes at 
+all (naively about 1200 cycles).
+  1. Connect a jumper from pin 20 to 21 (loopback).
+  2. `make` will run the code.
+  3. Look through the code!
+
+
+For the initial implementation I get the following measurements:
+```
+n = 0: about to write
+n = 0, time until read cycle=232, time until return==1614
+n = 1: about to write
+n = 1, time until read cycle=156, time until return==1199
+n = 2: about to write
+n = 2, time until read cycle=153, time until return==1193
+n = 3: about to write
+n = 3, time until read cycle=156, time until return==1195
+n = 4: about to write
+n = 4, time until read cycle=153, time until return==1195
+n = 5: about to write
+n = 5, time until read cycle=156, time until return==1199
+n = 6: about to write
+n = 6, time until read cycle=153, time until return==1195
+n = 7: about to write
+n = 7, time until read cycle=156, time until return==1199
+n = 8: about to write
+n = 8, time until read cycle=154, time until return==1197
+n = 9: about to write
+n = 9, time until read cycle=156, time until return==1195
+
+
+You should go through and 
+  1. Move the cycle count read to the first instruction of the interrupt
+     trampoline and pass it to the C code..  Use a global register to hold
+     the value.
+  2. Adapt the code to have your scope and test genration code.
+
+
+For my code, I get around 4 cycle error per sample, for a low total
+error:
+
+```
+event 1: v=1, cycle=5996, err=4, toterr=4
+event 2: v=0, cycle=5996, err=4, toterr=8
+event 3: v=1, cycle=5996, err=4, toterr=12
+event 4: v=0, cycle=5996, err=4, toterr=16
+event 5: v=1, cycle=5996, err=4, toterr=20
+event 6: v=0, cycle=5996, err=4, toterr=24
+event 7: v=1, cycle=5996, err=4, toterr=28
+event 8: v=0, cycle=5996, err=4, toterr=32
+event 9: v=1, cycle=5996, err=4, toterr=36
+event 10: v=0, cycle=5997, err=3, toterr=39
+event 11: v=1, cycle=5996, err=4, toterr=43
+event 12: v=0, cycle=5995, err=5, toterr=48
+event 13: v=1, cycle=5996, err=4, toterr=52
+```
 
 -----------------------------------------------------------------
 ### Use page faults or watchpoints to get rid of the loop condition.
