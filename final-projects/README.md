@@ -33,8 +33,6 @@ Some final project ideas:
    between two Pis (or talking to something with a parallel interface,
    like a camera or LCD) would be a cool final project!
 
-￼
-
   - (From Joe): We have 1 spare [pinetime](https://wiki.pine64.org/wiki/PineTime, https://pine64.com/product/pinetime-dev-kit/) and I'm sure can get more if people are interested and shipping permits
 
     The pinetime is an open source smartwatch with a touchscreen,
@@ -51,4 +49,59 @@ Some final project ideas:
 
 <p align="center">
 <img src="./date-images-with-audio.jpg" width="450" />
+</p>
+
+  - [EKG input](https://twitter.com/ingarobotics/status/1635486902068584448?t=XhXbmr6DiyfUDR1IwZVU0Q&s=19)
+
+<p align="center">
+<img src="./ekg.jpg" width="450" />
+</p>
+
+  - [Water clock](https://twitter.com/Rainmaker1973/status/1638255091726577664?t=_bQHFrQQ8swiuk2H27Ik8g&s=19)
+
+<p align="center">
+<img src="./water-clock.jpg" width="450" />
+</p>
+
+  - make a pi cluster like (https://twitter.com/ExtElec/status/1641839012976422916?t=BIczeyLC6jGq1SPQY2ovRw&s=19).  Parthiv made cluster boards.
+
+<p align="center">
+<img src="./pi-cluster.jpg" width="450" />
+</p>
+
+  - [pi watch](https://www.raspberrypi.com/news/how-to-build-your-own-raspberry-pi-watch/)
+
+<p align="center">
+<img src="./pi-watch.jpg" width="450" />
+</p>
+
+  - [nixie light controller](https://www.hackster.io/news/charles-lohr-turns-a-0-10-risc-v-microcontroller-into-a-software-defined-flyback-for-nixie-tubes-aabafa76aa78)
+
+<p align="center">
+<img src="./nixie.jpg" width="450" />
+</p>
+
+  - [ethernet](https://vanhunteradams.com/Pico/Ethernet/UPD_TX.html)
+
+<p align="center">
+<img src="./pi-ethernet.jpg" width="450" />
+</p>
+
+  - [Leaking bits using PMU](https://www.zdnet.com/article/academics-turn-pc-power-unit-into-a-speaker-to-leak-secrets-from-air-gapped-systems/)
+
+
+<p align="center">
+<img src="./pmu-xmit.jpg" width="450" />
+</p>
+
+  - [realtime magnetic imaging](https://twitter.com/giammaiot2/status/1658066614225436672?t=6f5wfOGh8VAopwXZLIIL0g&s=19)
+
+<p align="center">
+<img src="./realtime-magnetic-field.jpg" width="450" />
+</p>
+
+  - [self balancing platform](https://twitter.com/Rainmaker1973/status/1658045259287343106?t=bqFBhwwcl_iN5KdP_BN1sA&s=19)
+
+<p align="center">
+<img src="./self-balance-platform.jpg" width="450" />
 </p>
