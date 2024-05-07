@@ -170,3 +170,9 @@ Some final project ideas:
 <p align="center">
 <img src="./tactile-mini.jpg" width="450" />
 </p>
+
+  - [radiation detector](https://hackaday.io/project/27508-open-radiation-detector)
+
+<p align="center">
+<img src="./radiation-detector.jpg" width="450" />
+</p>
