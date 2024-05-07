@@ -11,6 +11,15 @@ Final projects:
 You can (and are encouraged to) devise your own final project, but we've listed
 out some possible options.
 
+
+We've listed some project from the web in a big set (most are pretty
+ambitious so you'd likely cut them down) followed by some more
+OS centric projects.
+
+If you don't want to think hard and want to do something useful for future
+iterations: simply boot up a new microcontroller, port the bootloader and
+a few labs, and write it up.  This has large bang for buck.
+
 ------------------------------------------------------------------------------
 ## Final projects ideas from the web.
 
@@ -140,7 +149,7 @@ Some final project ideas:
   - [RF or wifi scanner](https://twitter.com/lozaning/status/1663575202461110273?t=7YQENE0C9Qn2iungYQ53CQ&s=19)
 
 <p align="center">
-<img src="./signal-jammer.jpg" width="450" />
+<img src="./rf-wifi-scanning.jpg" width="450" />
 </p>
 
   - [Art display](https://twitter.com/cryptograffiti/status/1663237774500036625?t=W4NET2jMKwsw3LcKz5bDzA&s=19)
