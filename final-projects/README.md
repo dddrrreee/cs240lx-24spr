@@ -208,3 +208,9 @@ Some final project ideas:
 <p align="center">
 <img src="./two-way-radio.jpg" width="450" />
 </p>
+
+  - I haven't read closely but looks do-able:
+    [Using the pi to snoop unencrypted bus traffic](https://www.tomshardware.com/pc-components/cpus/youtuber-breaks-bitlocker-encryption-in-less-than-43-seconds-with-sub-dollar10-raspberry-pi-pico).
+
+
+
