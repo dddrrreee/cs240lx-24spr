@@ -105,3 +105,68 @@ Some final project ideas:
 <p align="center">
 <img src="./self-balance-platform.jpg" width="450" />
 </p>
+
+  - Use multiple cheap displays to make a [solid state volumetric display](https://twitter.com/idlehandsdev/status/1661343789527490560?t=Nu2ctoQwNTfaGB15K8XY_A&s=19).  
+     
+<p align="center">
+<img src="./ss-volumetric.jpg" width="450" />
+</p>
+
+  - [networked subwoofer](https://www.audiokinesis.com/the-swarm-subwoofer-system-1.html)
+
+<p align="center">
+<img src="./networked-subwoofer.jpg" width="450" />
+</p>
+
+  - [cute signal jammer](https://twitter.com/giammaiot2/status/1662541683404206080?t=k-eKGufcn9Yc_oGn5CCbUw&s=19)
+
+<p align="center">
+<img src="./signal-jammer.jpg" width="450" />
+</p>
+
+  - [RF or wifi scanner](https://twitter.com/lozaning/status/1663575202461110273?t=7YQENE0C9Qn2iungYQ53CQ&s=19)
+
+<p align="center">
+<img src="./signal-jammer.jpg" width="450" />
+</p>
+
+  - [Art display](https://twitter.com/cryptograffiti/status/1663237774500036625?t=W4NET2jMKwsw3LcKz5bDzA&s=19)
+
+<p align="center">
+<img src="./art-display.jpg" width="450" />
+</p>
+
+  - [clean little oscilliscope](https://hackaday.com/2023/02/27/diy-stm32-scope-is-simple-cheap-and-featureful/)
+
+<p align="center">
+<img src="./clean-oscilliscope.jpg" width="450" />
+</p>
+
+  - [pi raid](https://www.geeky-gadgets.com/raspberry-pi-nas-60-hhds-23-06-2022/)
+
+<p align="center">
+<img src="./pi-raid.jpg" width="450" />
+</p>
+
+  - [wireless mouse](https://www.hackster.io/news/wireless-mouse-ring-interface-d34ef0beb831)
+
+<p align="center">
+<img src="./wireless-mouse.jpg" width="450" />
+</p>
+
+  - OS on ipod mini: [some starter code](https://github.com/dwelch67/ipod_mini)
+
+  - [Make a tiny bootloader](https://twitter.com/cnlohr/status/1635082283798659072?t=uw8rDkMPdz1VJdoLMNzjJA&s=19)
+
+<p align="center">
+<img src="./small-bootloader.jpg" width="450" />
+</p>
+
+  - Fun music: tactile mini.
+
+    https://twitter.com/diyelectromusic/status/1632505624222224384?t=kbn3nrGA_E6khPO6IEUlPw&s=19
+    https://twitter.com/diyelectromusic/status/1634928271673667584?t=oR7l8HI1uOoBXodx11zYPw&s=19
+
+<p align="center">
+<img src="./tactile-mini.jpg" width="450" />
+</p>
