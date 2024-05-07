@@ -176,3 +176,35 @@ Some final project ideas:
 <p align="center">
 <img src="./radiation-detector.jpg" width="450" />
 </p>
+
+  - No idea if feasible, but doing 
+    [night vision goggles seems fun](https://diyodemag.com/projects/build_your_own_raspberry_pi_powered_diy_night_vision_goggles_nvg)
+
+
+<p align="center">
+<img src="./night-vision.jpg" width="450" />
+</p>
+
+
+  - Haven't looked at carefully but seems feasible  to 
+    [use the pi to attack wireless devices](https://www.scip.ch/en/?labs.20230223)
+
+<p align="center">
+<img src="./attacking-wireless.jpg" width="450" />
+</p>
+
+  - [booting a riscv laptop](https://linuxgizmos.com/licheeconsole4a-compact-laptop-with-risc-v-can-now-be-preordered/).  $300 rv laptop looks fine for custom os.
+
+
+
+  - [Make a HAM radio](https://www.tomshardware.com/raspberry-pi/raspberry-pi-projects/raspberry-pi-pico-ham-transmitter-uses-onboard-pio-for-oscillator)
+
+<p align="center">
+<img src="./ham-radio.jpg" width="450" />
+</p>
+
+  - [Nice radio form factor](https://twitter.com/PicoAPRS/status/1729167493648785831?t=hZaXcFnTjq-gPLXC6NiaQw&s=19)
+
+<p align="center">
+<img src="./two-way-radio.jpg" width="450" />
+</p>
