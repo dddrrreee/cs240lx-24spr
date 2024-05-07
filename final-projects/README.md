@@ -1,29 +1,70 @@
 # Final projects
 
-Final projects:
-
-- Do something interesting!
-- 1-5 people: the more people, the more you better do.
-- Check with us if you need funding for hardware.
-- Presentations will be during the final exam slot. If this is a problem due
-  to travel, let us know and we'll arrange an alternative way to check off.
-
-You can (and are encouraged to) devise your own final project, but we've listed
-out some possible options.
+<p align="center">
+  <img src="final-project.png" width="400" />
+</p>
 
 
-We've listed some project from the web in a big set (most are pretty
-ambitious so you'd likely cut them down) followed by some more
-OS centric projects.
+tl;dr: the easiest project:
 
-If you don't want to think hard and want to do something useful for future
-iterations: simply boot up a new microcontroller, port the bootloader and
-a few labs, and write it up.  This has large bang for buck.
+  - If you don't want to think hard and want to do something useful
+    for future iterations: simply boot up a new microcontroller, port
+    the bootloader and a few labs, and write it up.  This has large bang
+    for buck.
+
+Project logistics:
+ - Should be about 3 labs worth of work.  More is also ok!
+ - You can work with teams of up to 3 but more team members = more
+   work required for same grade.
+ - We can reimburse for equipment (within reason).
+ - The final project presentations will be during the 140e final slot.
+ - The presentation is optional.  There are 5 minute and 10 minute
+   slots depending on the project size.
+
+
+What to turn in:
+ - You should write up a short description of your project (1 page is
+   fine).  What the idea is, what the challenges were, what devices you
+   did, any errata.
+ - Ideally you make a video showing your project and have this on
+   your github with a title + desciption so so we can point people in
+   future classes to it.
+
+   I think going over final projects on the first intro day of class is
+   probably better than jumping into machine code (as we did this year).
+
+Write up your devices as labs!
+
+  - It counts towards the overall project if for any device you have
+    you write up a short device lab on how to get it working (and how
+    to check its results) with the datasheet and maybe some starter code.
+
+    Importantly: if another group successfully runs your lab and
+    implements the device and gives feedback, this counts towards both
+    groups final project grade.
+
+  - If the lab is reasonable, we'll add it to the official repo with
+    your name etc.  Ideally over the years we can build up 10s (100s?) of
+    new device labs spun out from different final projects.
+
+You can (and are encouraged to) devise your own final project, but we've
+listed out some possible options below.  The first set is from the web
+(most are pretty ambitious so you'd likely cut them down) followed by
+some more OS centric projects.
+
+
 
 ------------------------------------------------------------------------------
 ## Final projects ideas from the web.
 
 Some final project ideas:
+
+ - Leak data using EM.  
+
+<p align="center">
+<img src="./magneto.jpg" width="450" />
+</p>
+
 
  - [led earring](https://twitter.com/cnlohr/status/1760205375989760182?t=rpdSMSyzZ7YBwPwGIN8aVw&s=19).  Interesting project --- you'd need to boot up a small microcontroller and figure out packaging and battery.
 
@@ -562,3 +603,8 @@ the code is accessing outside of its region.
   it should make orders of magnitude difference in bandwidth/speed. This is
   probably easier than wirelesss by 10x at least. It's also very useful for
   other people out there. (E.g., search "raspberry pi bare metal sd driver").
+
+--------------------------------------------------------------------
+<p align="center">
+  <img src="group-spite.jpg" width="400" />
+</p>
