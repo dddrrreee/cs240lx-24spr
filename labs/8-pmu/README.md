@@ -27,7 +27,7 @@ Checkoff:
 ----------------------------------------------------------------------
 ### Part 1:  implement `code/armv6-pmu.h`
 
-Fill in the `unimplemented` routines in `armv6-pmu.h`.  I'd suggest
+Fill in the `unimplemented` routines in `code/armv6-pmu.h`.  I'd suggest
 using the `cp_asm` macros in
 
         #include "asm-helpers.h"
@@ -45,20 +45,6 @@ What you need:
 
 Note you can also count interrupts by using the system validation counter
 register (3-140) but we won't use this today.
-
-When I run `code/test-pmu.c` I get:
-
-    no cache: doesn't work?:
-	    total calls=0, total returns =0
-    cache [expect 10]:
-	    total calls=10, total returns =10
-    cache [expect 10]:
-	    total call count=10, total return count=10
-    disabling caches again
-    no cache branches:
-	    total branch mispredict=10, total branch executed=22
-    cache branches:
-	    total branch mispredict=1, total branch executed=22
 
 ----------------------------------------------------------------------
 ### Part 2: write code that shows off some of the other performance counters.
