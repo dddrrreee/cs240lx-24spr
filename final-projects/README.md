@@ -301,6 +301,13 @@ Some final project ideas:
 <img src="./audio-effects.jpg" width="450" />
 </p>
 
+
+  - [Nice use of steppers for sound](https://twitter.com/getwired/status/1738832034133659792?t=Ino-fwkv6LJMJv6qmsweOA&s=03)
+
+
+<p align="center">
+<img src="./nice-stepper-sound.jpg" width="450" />
+</p>
 ------------------------------------------------------------------------------
 ## Final projects ideas from us
 
