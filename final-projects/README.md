@@ -304,10 +304,14 @@ Some final project ideas:
 
   - [Nice use of steppers for sound](https://twitter.com/getwired/status/1738832034133659792?t=Ino-fwkv6LJMJv6qmsweOA&s=03)
 
+    There are labs for both (1) an i2s microphone and (2) using steppers 
+    to make sound in last years 240lx.  
 
 <p align="center">
 <img src="./nice-stepper-sound.jpg" width="450" />
 </p>
+
+
 ------------------------------------------------------------------------------
 ## Final projects ideas from us
 
