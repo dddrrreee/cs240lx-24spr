@@ -293,7 +293,14 @@ Some final project ideas:
 <img src="./thermal-cam.jpg" width="450" />
 </p>
 
+
+  - [Nice audio effects project](https://twitter.com/PaulStoffregen/status/1764384758442967393?t=JyjLgRwrqoCE5DFeolZ1pw&s=03)
+
   
+<p align="center">
+<img src="./audio-effects.jpg" width="450" />
+</p>
+
 ------------------------------------------------------------------------------
 ## Final projects ideas from us
 
