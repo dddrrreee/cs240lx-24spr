@@ -32,6 +32,15 @@ using the `cp_asm` macros in
 
         #include "asm-helpers.h"
 
+You probably should have an enum for all the different types in
+the header too.  E.g.,
+
+        enum {
+            PMU_INST_CNT = 0x7,
+            ...
+        };
+
+
 What you need:
    1. Performance monitor control register (3-133): write this to
       select which performance counters to use (the values are in tabel
