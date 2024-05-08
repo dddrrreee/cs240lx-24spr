@@ -276,6 +276,24 @@ Some final project ideas:
     [Using the pi to snoop unencrypted bus traffic](https://www.tomshardware.com/pc-components/cpus/youtuber-breaks-bitlocker-encryption-in-less-than-43-seconds-with-sub-dollar10-raspberry-pi-pico).
 
 
+  - Doing fault injection by messing with volates:
+    https://www.synacktiv.com/how-to-voltage-fault-injection
+
+    Basic puzzle: how to vary voltage to make the CPU jump over or do the
+    wrong branch of an if statement?  Used to attack smart cards etc.
+
+<p align="center">
+<img src="./fault-injection.jpg" width="450" />
+</p>
+
+
+  - [Thermal imaging camera](https://twitter.com/mikerankin/status/1766084442563469477?t=vowWK8Xwmw48S2F7pKwB-A&s=03)
+
+<p align="center">
+<img src="./thermal-cam.jpg" width="450" />
+</p>
+
+  
 ------------------------------------------------------------------------------
 ## Final projects ideas from us
 
