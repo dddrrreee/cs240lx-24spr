@@ -4,8 +4,24 @@
   <img src="images/robot-pi.png" width="450" />
 </p>
 
+### tl;dr
 
-***Errata:***
+140e alums you should do one of the follow:
+
+  - instead of doing the MPU 6050, we have a more expensive 9-axis MPU-9250.
+    This includes a magnetometer so you can do correction.
+
+  - alternatively we just got a lidar module.  There is no data sheet but
+    hypothesis I have is that it works like others: the data is send over
+    UART protocol (115200*3).  You'll need your software uart, likely
+    need to make it interrupt based, and work off of different datasheets
+    to interpet the numbers.  I think (hope) it's much easier than it sounds
+    and has the nice feature that it's totally green field.
+
+
+### MPU 6050: Errata
+
+Errata:
 - The given register values for the gyro are not correct
   (e.g., `CONFIG` and `GYRO_CONFIG`).  You should use the values in the
   PDF, not in the C code.  
