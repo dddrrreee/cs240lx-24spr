@@ -178,7 +178,7 @@ When you're done, your schematic should look something like this:
 * `M`: move (after selecting a symbol)
 * `R`: rotate (after selecting a symbol)
 
-## Step 2: Create PCB
+## Step 3: Create PCB
 
 Now, the fun begins -- time to create the PCB. For all of these steps, you don't have to match the exact thing I do. Actually better if you don't, so it's your board and not you making my board :D
 
@@ -449,3 +449,12 @@ Hit "NEXT".
 ![JLCPCB 3D](img/jlcpcb_3d.png)
 
 14. Click "Save To Cart". You're done and can order! It would take ~1 week to arrive.
+
+## Checkoff 
+- Have a finalized PCB design that has no DRC violations (or at least, only DRC violations that are ignorable)
+
+### Extensions (in rough increasing order of difficulty)
+- Add a new sensor to the board
+- Figure out autorouting. I haven't done this, but you can see [this video](https://www.youtube.com/watch?v=AuBZ1W80c9s) maybe?
+- Integrate the USB-Serial chip (CP2102N) directly onto the board. You can see the `parthiv_pcb_v2.1` directory which has a sample project. You may want to look at [the datasheet](https://www.silabs.com/documents/public/data-sheets/CP2102-9.pdf)
+- Design a board for your own project. Feel free to email me if you need help!
