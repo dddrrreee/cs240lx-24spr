@@ -1,13 +1,13 @@
 #PROGS := tests/5-circular-q-ok-test.c
 
-PROGS := tests/0-epsilon-test.c
 PROGS := $(wildcard tests/[01234567]*-test.c)
 PROGS := tests/1-epsilon-should-fail-test.c
-PROGS := tests/2-increment-fail-test.c
 PROGS := tests/3-circular-ok-test.c
 PROGS := tests/4-trylock-ok-test.c
 PROGS := $(wildcard tests/[023567]*-test.c)
 
+PROGS := tests/2-increment-fail-test.c
+PROGS := tests/0-epsilon-test.c
 
 COMMON_SRC += check-interleave.c   
 
