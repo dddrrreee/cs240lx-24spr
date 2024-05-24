@@ -21,18 +21,20 @@ For this lab you'll have to read the comments. Sorry :(
 The client interface is `checker_t:checker-interlace.h`.  The client gives us
 a `checker_t` structure with four routines:
   1. `c->A()`, `c->B()`: the two routines to check.
-  2. `c->init()`: initialize the state used by `A()` `B()`.
-  3. `c->check()`: called after running `A(); B()`: returns 1 
-      if state was correct, 0 otherwise.
+  2. `c->init()`: initialize the state used by `A()` `B()`.   Calling this
+      after running A() and B() should always set their data to the same
+      initial values so that they are deterministic.
+
+  3. `c->check()`: called after running `A(); B()`: returns 1
+      if state was correct, 0 otherwise.  This routine uses code-specific
+      knowlege to decide if the final state is correct.
 
 A sequential execution would look like:
 
 ```
         // 1.  initialize the state.
         c->init(c);
-        // 2. run A()
         c->A(c);
-        // 3. run B()
         if(!c->B(c))
             panic("B should not fail\n");
         // 4. check that the state passes.
@@ -43,7 +45,10 @@ A sequential execution would look like:
 If this does not pass the code is very broken and we complain.
 
 Assuming a single run passes, we can can put this block of code in a
-loop and multiple times and should pass each time.  If it does one of
+loop  (as our example code in `check:check-interleave.c` does)
+: this is the first thing we 
+
+and multiple times and should pass each time.  If it does one of
 the routines might be non-deterministic, or `init()` might not reset
 the state correctly.
 
@@ -145,15 +150,14 @@ Easiest approach: change the makefile to only run
 For this make sure your code handles all tests tests besides test 4.
 Test 3 and 5 are reasonable; the others are trivial.  
 
-
 -----------------------------------------------------------------------
 ### Part 2:  make a trylock for test 4.
+
 
 For this you'll add a system call that implements the try-lock needed
 for test `4-trylock-ok-test.c`.  This is pretty trivial.  But shows how
 to add new concurrency primitives using our trivial system calls so that
 they can work atomically (i.e., without single stepping).
-
 
 -----------------------------------------------------------------------
 ### Part 3: add some interesting tests.
