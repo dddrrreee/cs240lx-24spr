@@ -1,5 +1,15 @@
 ## Lab: using single stepping to check interleaving.
 
+Update May 28 tues:
+ - add trylock (part 2)
+ - add a yield system call (part 3) and rewrite some tests so they
+   have B yield rather than fail.
+ - add a couple non-ridiculous ai-generated tests and find bugs (or not
+   if it gets it right!)
+ - ideally as an extension you can do at least two context switches
+   and have some tests to show that this works (e.g., write some 
+   assembly so you know the exact number of instructions).
+
 We'll use single-stepping to write a concurrency checker that is tiny
 but mighty.
 
@@ -11,6 +21,7 @@ For this lab you'll have to read the comments. Sorry :(
   - check-interleave.h: has the the interface.
   - check-interleave.c: has a working version.
   - tests/ has tests.  As usual, test 0 is easier than test 1 etc.
+
 
 -----------------------------------------------------------------------
 ### Background
@@ -151,16 +162,78 @@ For this make sure your code handles all tests tests besides test 4.
 Test 3 and 5 are reasonable; the others are trivial.  
 
 -----------------------------------------------------------------------
-### Part 2:  make a trylock for test 4.
+### Part 2:  make a `sys_trylock()` for test 4.
 
+For this you'll add a system call that implements the try-lock needed for
+test `4-trylock-ok-test.c`.    This is an example of a common pattern
+we will do in the checker: implement a concurrency primitive using a
+system call so that we (1) don't interrupt it with single-stepping and
+(2) have a complete context for the blocking thread so we can yield from
+one to another if needed.
 
-For this you'll add a system call that implements the try-lock needed
-for test `4-trylock-ok-test.c`.  This is pretty trivial.  But shows how
-to add new concurrency primitives using our trivial system calls so that
-they can work atomically (i.e., without single stepping).
+(Note, this isn't the only way we can acheive these two goals.)
+
+The most general way to implement this is to 
+run `B()` as a second thread.
+Why:
+  - Given how the exception trampoline code is written, we can't
+    call system calls from privileged code.  (Note: you could rewrite
+    your 140e `full-except.c` to do so if you want).
+
+    Thus, if B() is allowed to call the trylock code (it is) we need to
+    run B()'s code at user-level.  The most straightfoward way to do so
+    is to run it as a second thread.  This will also let us implement a
+    `yield` primitive (part 3, below) and switch multiple times.
+
+  - Note: you could also achieve the same result by (1) by adding new
+    system calls or (2) changing the code to check if its at user-level
+    and, if not, call the function directly.  We don't do so b/c most
+    of the extensions need two threads.
+
+You can do so by:
+ 1. Adapt the the `run_A` code to create a second thread.  Note: b/c
+    of armv6 restrictions make sure you are allocating the stack to be
+    8-byte aligned.  You'll need to change the code so on exit it does
+    the right thing for both the A and the B thread.
+
+ 2. Have a thread queue that you put the threads on and dequeue (as usual).
+ 3. Adapt your single step handler to use a `switchto` to the next thread
+    rather than calling B directly.
+ 4. For some code you wo't be able to run the sequential check as-is, so 
+    either disable it, or make sure your threads can handle "running 
+    sequentially".
+
+This test is pretty dumb, so you probably should write another one.
 
 -----------------------------------------------------------------------
-### Part 3: add some interesting tests.
+### Part 3:  make a `sys_yield()`.
+
+For simplicity, our base checking system assumed it could call B() in
+the exception handler and it would run to completion: i.e., it couldn't
+yield back to `A()`  if the shared state was not ready (e.g., in the
+case of a shared queue, if `B()` wanted to do a pop
+and `A()` hadn't done a push yet).
+
+Two lame consequences:
+ 1. Our base checker interface is a bit hacked in that it has
+    B() return a failure if it can't make progress rather than yield
+    and wait.
+ 2. As a result of (1) we check a dramatically smaller set of 
+    interleavings than are possible --- e.g., we only run `B()`
+    to completion when the shared state is completely setup.   This
+    will cause us to miss errors.
+
+So, fix this:
+  1. Use the fact we have two threads (from part 2) to implement a new
+     system call, `sys_yield()` so that B (and A) can yield to the
+     other thread when it needs it additional work done before it can
+     make progress.
+  2. Write a test that shows your yield works as expected.
+  3. Make copies and rewrite the tests so that they do yield rather 
+     than have B() return an error.
+
+-----------------------------------------------------------------------
+### Part 4: add some interesting tests.
 
 Easy mode: get some "lock-free" code from GPT or Claude and check it.
 Should be able to find some bugs.
@@ -189,11 +262,17 @@ There's an enormous number of extensions:
     add, subtract, multiply) it can't affect B().  (And vice versa.)
     
     Thus we only need to switch on memory or synchornization operations.
+    To do this you can decode the instruction that was interrupted and
+    only switch if it was a memory or sync operation.  You already have
+    some idea of how to decode instructions from the JIT labs: in our case
+    we don't need to know the exact instruction, just that it does memory.
 
   - Speed: the number of paths grows exponentially with the number of
     switches.  The standard way to handle this is to hash the memory
-    state and if you get to the same program point with the same
-    state, prune execution.  
+    state and if you get to the same program point with the same state,
+    prune execution.
 
     As a crude method you could side-step the need to know what memory
-    locations are being read or written by hashing the register set.  
+    locations are being read or written by hashing the register set for
+    each thread and prune when the remaining context switches are  the
+    same (or fewer) than a previous state.
