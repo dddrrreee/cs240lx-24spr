@@ -9,7 +9,10 @@ Update May 28 tues:
  - ideally as an extension you can do at least two context switches
    and have some tests to show that this works (e.g., write some 
    assembly so you know the exact number of instructions).
-
+ - checked in: a new header (`code/is-mem.h`) for determining if a 
+   instruction is a load or a store.
+ - checked in: tests rewritten to use yield (`tests-2.0`).
+   
 We'll use single-stepping to write a concurrency checker that is tiny
 but mighty.
 
