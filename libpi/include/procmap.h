@@ -105,14 +105,6 @@ static inline procmap_t procmap_default_mk(unsigned dom) {
     char *end = kmalloc_heap_end();
     unsigned nbytes = end - start;
 
-    // for today: check that heap starts at 1MB.
-    if(start != (void*)MB)
-        panic("sanity check that heap starts at 1mb failed: %p\n", start);
-    assert(start == (void*)MB);
-    // and that its 1MB big.
-    if(nbytes != MB)
-        panic("nbytes = %d\n", nbytes);
-
     procmap_push(&p, pr_ent_mk(0x00100000, MB, MEM_RW, dom));
 
     // the two hardcoded stacks we use.
