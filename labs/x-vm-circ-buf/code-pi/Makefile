@@ -1,6 +1,7 @@
 PROGS := $(wildcard tests/*-test.c)
 
-COMMON_SRC += vm-circ-buf.c
+COMMON_SRC += vm-circ-buf-init.c
+COMMON_SRC += vm-circ-buf-ops.c
 
 BOOTLOADER=my-install
 RUN = 1
