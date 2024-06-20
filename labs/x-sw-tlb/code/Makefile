@@ -4,6 +4,7 @@ COMMON_SRC += tests/common.c
 COMMON_SRC += sw-tlb-mmu-init.S
 COMMON_SRC += sw-tlb-mmu-write.c
 COMMON_SRC += sw-tlb-handler.c
+COMMON_SRC += sw-tlb-map.c
 
 BOOTLOADER=my-install
 RUN = 1

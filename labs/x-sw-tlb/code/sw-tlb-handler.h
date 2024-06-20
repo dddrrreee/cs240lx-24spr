@@ -24,4 +24,7 @@
 void sw_tlb_handler_initialize(unsigned lockdown_start_idx);
 
 //! \brief The number of exceptions that have occured
-extern volatile unsigned sw_tlb_num_exceptions;
+//!
+//! Note that this isn't `volatile`. It doesn't need to be, since we never rely
+//! on it being modified in the middle of a function.
+extern unsigned sw_tlb_num_exceptions;

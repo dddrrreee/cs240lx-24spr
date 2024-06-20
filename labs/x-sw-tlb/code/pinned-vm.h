@@ -157,6 +157,10 @@ static inline pin_t pin_64k(pin_t p) {
     p.pagesize = PAGE_64K;
     return p;
 }
+static inline pin_t pin_4k(pin_t p) {
+    p.pagesize = PAGE_4K;
+    return p;
+}
 
 // possibly we should just multiply these.
 enum {
