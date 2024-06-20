@@ -1,9 +1,12 @@
-#define TEST_NAME "1-pushpop-wraparound"
-#include "tests/test-common.c.inc"
+#include "rpi.h"
+
+#include "tests/common.h"
+#include "vm-circ-buf.h"
 
 static uint8_t skew_buf[0x100] = {0};
 
-void run_test(vm_circ_buf_t buf) {
+void notmain(void) {
+    vm_circ_buf_t buf = test_setup();
 
     // Skew the buffer by 0x100 bytes
     vm_circ_buf_push(&buf, skew_buf, 0x100);

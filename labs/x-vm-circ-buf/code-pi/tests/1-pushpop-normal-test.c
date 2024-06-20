@@ -1,5 +1,7 @@
-#define TEST_NAME "1-pushpop-normal"
-#include "tests/test-common.c.inc"
+#include "rpi.h"
+
+#include "tests/common.h"
+#include "vm-circ-buf.h"
 
 const char *test_data =
     "I'd just like to interject for a moment. What you're referring to as"
@@ -23,7 +25,8 @@ const char *test_data =
     "so-called \"Linux\" distributions are really distributions of GNU/Linux."
 ;
 
-void run_test(vm_circ_buf_t buf) {
+void notmain(void) {
+    vm_circ_buf_t buf = test_setup();
     size_t test_len = strlen(test_data);
 
     vm_circ_buf_push(&buf, (uint8_t *)test_data, test_len);

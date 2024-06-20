@@ -1,23 +1,17 @@
-//! \file test-common.c.inc
+//! \file common.c
 //! \brief Common test setup for the VM circular buffer
-//!
-//! To use this file, include it in your test file, and define the `run_test`
-//! function. You can also define `TEST_NAME` before including this file as a
-//! string to be printed.
 
 #include "rpi.h"
 #include "pt-vm.h"
 
+#include "tests/common.h"
 #include "vm-circ-buf.h"
 
 // The domain we run kernel code in. For safety, we don't use 0. So, we'll start
 // at 1 instead.
 static const unsigned DOM_KERNEL = 1;
 
-// Function to actually run the test
-void run_test(vm_circ_buf_t buf);
-
-void notmain(void) {
+vm_circ_buf_t test_setup(void) {
 
     // We're forced to use the heap because of `procmap`, so we'll put it
     // between 1MiB and 3MiB. The reason it's so large is because we allocate
@@ -42,11 +36,6 @@ void notmain(void) {
     vm_mmu_enable();
     assert(mmu_is_enabled());
 
-#ifdef TEST_NAME
-    output("Running Test: " TEST_NAME "\n");
-#else
-    output("Running Test\n");
-#endif
-
-    run_test(buf);
+    output("Setup complete!\n");
+    return buf;
 }

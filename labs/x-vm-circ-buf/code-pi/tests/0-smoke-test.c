@@ -1,7 +1,11 @@
-#define TEST_NAME "0-smoke"
-#include "tests/test-common.c.inc"
+#include "rpi.h"
 
-void run_test(vm_circ_buf_t buf) {
+#include "tests/common.h"
+#include "vm-circ-buf.h"
+
+void notmain(void) {
+    vm_circ_buf_t buf = test_setup();
+
     // Check that the mappings are correct
     buf.window[0] = 240u;
     assert(buf.store[0] == 240u);
