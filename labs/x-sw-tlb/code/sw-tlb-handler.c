@@ -35,6 +35,7 @@ static void sw_tlb_handler_common(uint32_t faulting_va) {
     assert(map.entries != NULL);
     assert(map.log_capacity > 0);
     sw_tlb_num_exceptions++;
+    faulting_va &= ~0xfffu;
 
     uint32_t faulting_vpn = faulting_va >> 12;
     uint32_t faulting_pa;
@@ -50,6 +51,8 @@ static void sw_tlb_handler_common(uint32_t faulting_va) {
     }
     assert(faulting_va >> 12 == faulting_vpn);
     assert(faulting_pa >> 12 == faulting_pfn);
+    assert((faulting_va & 0xfffu) == 0);
+    assert((faulting_pa & 0xfffu) == 0);
 
     assert(round_robin_counter < lockdown_len);
     sw_tlb_set(
