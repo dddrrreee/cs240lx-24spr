@@ -40,7 +40,7 @@ The protocol to set N pixels:
 ### Notes.
 
 Common mistakes:
-  1. for the inlined GPIO routines make sure you use `volatile` pointers.
+  1. For the inlined GPIO routines make sure you use `volatile` pointers.
   2. When writing to the neopixel array, make sure you discard any out of
      bound pixel values.
   3. If you're not getting fairly tight timings, make sure all you are doing
