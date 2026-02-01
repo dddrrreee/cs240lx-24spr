@@ -10,10 +10,13 @@ STAFF_OBJS  +=  ./staff-objs/gpio.o
 # you would add the path to yours.
 STAFF_OBJS  +=  ./staff-objs/uart.o
 STAFF_OBJS  +=  ./staff-objs/gpio-pud.o
-STAFF_OBJS  +=  ./staff-objs/gpio-int.o 
+STAFF_OBJS  +=  ./staff-objs/gpio-int.o
 STAFF_OBJS  +=  ./staff-objs/kmalloc.o
+STAFF_OBJS  +=  ./staff-objs/staff-full-except.o
+STAFF_OBJS  +=  ./staff-objs/staff-full-except-asm.o
+STAFF_OBJS  +=  ./staff-objs/staff-switchto-asm.o
 
-# you should not have to modify this variable.  
+# you should not have to modify this variable.
 SRC :=  $(SRC)                              \
         $(wildcard ./libc/*.[Sc])           \
         $(wildcard ./staff-src/*.[Sc])      \
